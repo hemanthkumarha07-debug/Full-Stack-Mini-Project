@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>Upcoming Events</h2>
+<input type="text" id="searchInput" placeholder="Search events...">
+<ul>
+  {% for event in events %}
+    <li>
+      <a href="{% url 'event_detail' event.id %}">{{ event.title }}</a> - {{ event.date }}
+    </li>
+  {% empty %}
+    <li>No events found.</li>
+  {% endfor %}
+</ul>
+<script src="{% static 'js/scripts.js' %}"></script>
+{% endblock %}

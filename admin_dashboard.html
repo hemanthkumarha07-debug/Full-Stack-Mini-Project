@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Admin Dashboard - Manage Events</h2>
+<h3>Add Event</h3>
+<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Add Event</button>
+</form>
+<h3>Existing Events</h3>
+<ul>
+    {% for event in events %}
+        <li>{{ event.title }} - {{ event.date }} {{ event.time }}</li>
+    {% empty %}
+        <li>No events available.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
